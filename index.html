@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta id="viewport" content="width=device-width, initial-scale=1.0">
+    <title>金管楽器譜読みサイト</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/jpg" href="images/favicon.jpg">
+</head>
+
+<body>
+    <h2>
+        音名←→運指コンバーター
+    </h2>
+    <hr>
+    <div>
+        <p>
+            <b>楽器を選択</b>
+        </p>
+        <select id="musicalInstrument">
+            <option id="null"></option>
+            <option id="HrA">ホルン Fシングル</option>
+            <option id="HrB">ホルン B♭シングル</option>
+            <option id="HrC">ホルン F/B♭フルダブル</option>
+            <option id="Tb">トロンボーン</option>
+            <option id="Tp">トランペット</option>
+            <option id="TubA">チューバ B♭管 4本バルブ</option>
+            <option id="Euph">ユーフォニアム</option>
+        </select>
+        <button id="btn">選択完了</button>
+        <div>
+            <p>
+                <b>楽譜の読み方 [音名表]</b>
+            </p>
+            <image src="images/high.jpg" alt="ト音記号のドイツ音名一覧" class="img" />
+            <image src="images/low.jpg" al="ヘ音記号のドイツ音名一覧" class="img" />
+        </div>
+        <button id="open">
+            使い方ガイド
+        </button>
+        <section id="modal">
+            <b>はじめに</b>
+            <p>このサイトは、金管楽器の自動譜読みができるサイトです。</p>
+            <p>鍵盤のように並んでいるボタンとオクターブを選択することで自動で譜読みしてくれます。</p>
+            <p>木管楽器については、運指を数字で表せないため、サイト上部の音名表を使ってください。</p>
+            <br>
+            <b>音名表の見方</b>
+            <p>音の下に書かれているCやDは音名、3や4はオクターブを表しています。</p>
+            <p>#や♭がついている場合は、「(音名)#」や「(音名)♭」を選んでください。</p>
+            <p>[例] C4に#がついている→C#,オクターブは4</p>
+            <p>また、Hに♭がついている場合は表し方が変わり、Bとなります。</p>
+            <br>
+            <b>使い方</b>
+            <p><b>1.</b>画面上部のセレクトボックスで楽器を選択する</p>
+            <p>選択されると「選択完了!」とポップアップウィンドウが表示されます。(消して大丈夫です)</p>
+            <p><b>2.</b>音名表を見ながら音を選択する</p>
+            <p>運指にundefinedと出てきたら、楽器が選択されていないかもしれません。</p>
+            <p>その場合は、もう一度選択してください。</p>
+            <p><b>3.</b>オクターブを選択する</p>
+            <p>音名表の見方を参考に、オクターブを上げる/下げるボタンでオクターブを変更してください。</p>
+            <p>ボタンを押すと自動的に「音名」の数字が変わります。</p>
+            <p><b>4.</b>運指を確認する</p>
+            <p>あとは運指を確認するのみです。</p>
+            <p>運指にnullと書かれている場合は、その楽器ではその音は出せないということです。</p>
+            <br>
+            <br>
+            <b>楽器の運指について</b>
+            <p><b>1.スライド楽器(トロンボーン)</b></p>
+            <p>スライド楽器は、ポジション番号を運指として表示しています。</p>
+            <p><b>2.その他の楽器(チューバ、トランペット、ホルンなど)</b></p>
+            <p>スライド楽器以外は、人差し指(または親指)から1,2,3と番号がついています。<br>(1番ピストン=1)</p>
+            <br>
+            <button id="close">閉じる</button>
+        </section>
+        <div id="mask"></div>
+        <div>
+            <p>
+                <b>譜読み結果</b>
+            </p>
+            <p id="setMI">楽器:</p>
+            <p id="text">表示中の音:</p>
+            <p id="text2">運指:</p>
+        </div>
+        <p>
+            <b>音を選択</b>
+        </p>
+        <div id="selectSound container">
+            <button class="selectBtnW" id="BtnC">ド<br>C</button>
+            <button class="selectBtnB" id="BtnDesCis">ド#<br>C#/Cis<br>レ♭<br>D♭/Des</button>
+            <button class="selectBtnW" id="BtnD">レ<br>D</button>
+            <button class="selectBtnB" id="BtnEsDis">レ#<br>D#/Dis<br>ミ♭<br>E♭/Es</button>
+            <button class="selectBtnW" id="BtnE">ミ<br>E</button>
+            <button class="selectBtnW" id="BtnF">ファ<br>F</button>
+            <button class="selectBtnB" id="BtnGesFis">ファ#<br>F#/Fis<br>ソ♭<br>G♭/Ges</button>
+            <button class="selectBtnW" id="BtnG">ソ<br>G</button>
+            <button class="selectBtnB" id="BtnAsGis">ソ#<br>G#/Gis<br>ラ♭<br>A♭/As</button>
+            <button class="selectBtnW" id="BtnA">ラ<br>A</button>
+            <button class="selectBtnB" id="BtnBAis">ラ#<br>A#/Ais<br>シ♭<br>B♭/B</button>
+            <button class="selectBtnW" id="BtnH">シ<br>B/H</button>
+        </div>
+        <br>
+        <div>
+            <button id="upSoundBtn" class="selectBtnRed">オクターブを上げる</button>
+            <button id="downSoundBtn" class="selectBtnBlue">オクターブを下げる</button>
+        </div>
+        <br>
+    </div>
+    <footer>
+        <p>このサイトは個人が運営しています。</p>
+        <p>
+            <i>ver 1.0.0</i>
+        </p>
+        <p>音名表の作成に使ったサイトは
+            <a href="https://flat.io/ja?srsltid=AfmBOopH6rKH7vaDOuuKujxFz5r9F2mDLdih2ZFkCqU_4SQ0fFl2ZKtN"
+                id="link">こちら</a>
+            <br>
+            (Flatに移動します)
+        </p>
+    </footer>
+</body>
+<script src="fingering.js"></script>
+<script src="soundSelect.js"></script>
+<script src="miSelect.js"></script>
+<script src="index.js"></script>
+<script src="animate.js"></script>
+
+</html>
