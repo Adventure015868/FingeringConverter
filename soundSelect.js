@@ -42,7 +42,7 @@ function getDesCis() {
         descisMusic = Tp_DesCis[i]
     };
     if (musicMIname === "ホルン Fシングル") {
-        descisMusic = HrA_DEsCis[i]
+        descisMusic = HrA_DesCis[i]
     };
     if (musicMIname === "ホルン B♭シングル") {
         descisMusic = HrB_DesCis[i]
@@ -300,4 +300,5 @@ function getH() {
     if (musicMIname === "ホルン F/B♭フルダブル") {
         hMusic = HrC_H[i]
     };
+
 };
